@@ -11,14 +11,38 @@ namespace Servicio
     public class BInvoice
     {
 
+        DInvoice dInvoice = new DInvoice();
+
+        public List<Invoice> Get() {
+            var invoices = dInvoice.Get();
+            return invoices;
+        }
+
         public List<Invoice> GetByDate(DateTime date)
         {
-            DInvoice dInvoice = new DInvoice();
             var invoices = dInvoice.Get();
             var result = invoices.Where(x=>x.Date == date).ToList();
             return result;
+        }
 
+        public bool InsertInvoice(Invoice request)
+        {
+            var result = dInvoice.Insert(request);
+            return result;
+        }
 
+        public bool DeleteInvoice(int id)
+        {
+            try
+            {
+
+                var result = dInvoice.Delete(id);
+
+                return true;
+            }catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

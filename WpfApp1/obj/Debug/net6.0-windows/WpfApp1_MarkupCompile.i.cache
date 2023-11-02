@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Alumno\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\
+D:\tarea\lab07\lab07xd-desAEA\WpfApp1\obj\Debug\net6.0-windows\
 WpfApp1
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\Alumno\source\repos\WpfApp1\WpfApp1\App.xaml
-11407045341
+D:\tarea\lab07\lab07xd-desAEA\WpfApp1\App.xaml
+31850450058
 
-5-1303815099
-203-983548243
-MainWindow.xaml;
+71567379274
+203-2128089837
+Agregar.xaml;Filtrar.xaml;MainWindow.xaml;
 
-False
+True
 

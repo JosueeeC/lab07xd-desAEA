@@ -11,7 +11,7 @@ namespace Datos
 {
     public class DInvoice
     {
-        public static string connectionString = "Data Source=LAB1504-22\\SQLEXPRESS;Initial Catalog=TAREA;User ID=josue;Password=123456";
+        public static string connectionString = "Data Source=JOSUE;Initial Catalog=TAREA;User ID=josue;Password=123456";
 
         public List<Invoice> Get()
         {
@@ -47,6 +47,52 @@ namespace Datos
             }
 
             return list;
+        }
+
+        public bool Insert(Invoice request)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("InsertInvoice", connection);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@customer_id",request.Customer_id);
+                    cmd.Parameters.AddWithValue("@date", request.Date);
+                    cmd.Parameters.AddWithValue("@total", request.Total);
+                    cmd.ExecuteNonQuery();
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool Delete(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("DeleteInvoice", connection);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@invoice_id", id);
+                    cmd.ExecuteNonQuery();
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
         }
     }
 }

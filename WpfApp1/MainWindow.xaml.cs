@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Entity;
 using Servicio;
 
 namespace WpfApp1
@@ -22,22 +23,58 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        BInvoice bInvoice = new BInvoice();
         public MainWindow()
         {
             InitializeComponent();
-            
 
-            
+            ListarDatos();
+
+
         }
 
-        private void btnFilter(object sender, RoutedEventArgs e)
+        public void btnAdd(object sender, RoutedEventArgs e)
+        {
+            Agregar agregar = new Agregar();
+            agregar.Closed += AgregarClosedHandler;
+            agregar.Show();
+
+        }
+
+        private void AgregarClosedHandler(object sender, EventArgs e)
+        {
+            Agregar agregar = (Agregar)sender;
+
+            ListarDatos();
+
+            agregar.Closed -= AgregarClosedHandler;
+        }
+
+        public void ListarDatos()
+        {
+            var data = bInvoice.Get();
+            var registrosNoVacios = data.Where(item => item != null); 
+            dataGrid.ItemsSource = registrosNoVacios;
+        }
+
+        public void btnFilter(object sender, RoutedEventArgs e)
+        {
+            Filtrar filtrar = new Filtrar();
+            filtrar.Show();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
 
-                BInvoice bInvoice = new BInvoice();
-                var date = DateTime.Parse(txtFilterDate.Text);
-                dataGrid.ItemsSource = bInvoice.GetByDate(date);
- 
+            var button = (Button)sender;
+            var invoice = (Invoice)button.Tag;
 
+            if (MessageBox.Show("¿Estás seguro de que deseas eliminar este elemento?", "Confirmar eliminación", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                bInvoice.DeleteInvoice(invoice.Invoice_id);
+                ListarDatos();
+            }
         }
     }
 }

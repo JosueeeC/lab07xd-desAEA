@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "DjPrlQa0xeGdoHz5f694y3ZIdTx8oB2HzxZ3d6Cr7FkplYfjRtoWTqQ/8P39AJwfhm6vli8NPyDMjwjyCkSUZA==",
+  "dgSpecHash": "MSCXnx8cmxkmNcT3mun2d2AgKZsZs23vYmGQjeX1AuDy6f+DfI0ZCyZf0BIDunip6wjF6ZVAu7gSKgsXxYGmJQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alumno\\source\\repos\\WpfApp1\\Entity\\Entity.csproj",
+  "projectFilePath": "D:\\tarea\\lab07\\lab07xd-desAEA\\Entity\\Entity.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Alumno\\.nuget\\packages\\extended.wpf.toolkit\\4.5.1\\extended.wpf.toolkit.4.5.1.nupkg.sha512"
+    "C:\\Users\\josue\\.nuget\\packages\\extended.wpf.toolkit\\4.5.1\\extended.wpf.toolkit.4.5.1.nupkg.sha512"
   ],
   "logs": []
 }
